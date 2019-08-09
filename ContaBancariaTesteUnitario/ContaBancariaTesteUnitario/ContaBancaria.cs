@@ -8,6 +8,9 @@ namespace ContaBancariaTesteUnitario
 {
     public class ContaBancaria
     {
+        public const string MsgValorDebitoMaiorSaldo = "O valor de débito é maior que o saldo";
+        public const string MsgValorDebitoMenorQueZero = "O valor de débito é menor que zero";
+
         public string Nome { get; private set; }
         public double Saldo { get; private set; }
 
@@ -21,12 +24,12 @@ namespace ContaBancariaTesteUnitario
         {
             if (valor > Saldo)
             {
-                throw new ArgumentOutOfRangeException("valor");
+                throw new ArgumentOutOfRangeException("valor", valor, MsgValorDebitoMaiorSaldo);
             }
 
             if (valor < 0)
             {
-                throw new ArgumentOutOfRangeException("valor");
+                throw new ArgumentOutOfRangeException("valor", valor, MsgValorDebitoMenorQueZero);
             }
 
             Saldo -= valor;
